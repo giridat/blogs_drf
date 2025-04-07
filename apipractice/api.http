@@ -1,0 +1,96 @@
+### ✅ Step 1: Register User (Send OTP)
+POST http://localhost:8000/restpractice/register/send-otp/
+Content-Type: application/json
+
+{
+  "phone": "7982638458"
+}
+
+### 🔐 Step 2: Verify Registration OTP (Create User + JWT)
+POST http://localhost:8000/restpractice/register/verify-otp/
+Content-Type: application/json
+
+{
+  "phone": "7982638458",
+  "session_id": "YOUR_SESSION_ID",
+  "otp": "123456"
+}
+
+### 🔓 Step 3: Login User (Send OTP)
+POST http://localhost:8000/restpractice/login/send-otp/
+Content-Type: application/json
+
+{
+  "phone": "7982638458"
+}
+
+### 🔑 Step 4: Verify Login OTP (Receive Tokens)
+POST http://localhost:8000/restpractice/login/verify-otp/
+Content-Type: application/json
+
+{
+  "phone": "7982638458",
+  "session_id": "YOUR_SESSION_ID",
+  "otp": "123456"
+}
+
+### 👤 Step 5: Get Current User Profile
+GET http://localhost:8000/restpractice/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0MDIyMDM0LCJpYXQiOjE3NDQwMjE3MzQsImp0aSI6ImJiZmY2Mzc3NzYxNzQ2NGNhNWNhN2IzYzcyOWEyOGNjIiwidXNlcl9pZCI6NH0.9JM2olScqe9L_aja16aBAb3rCoxIw_N6pT99w-muips
+
+### 🧑‍💼 Step 6: Get Public Profile by User ID
+GET http://localhost:8000/restpractice/users/3/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0MDIyMDM0LCJpYXQiOjE3NDQwMjE3MzQsImp0aSI6ImJiZmY2Mzc3NzYxNzQ2NGNhNWNhN2IzYzcyOWEyOGNjIiwidXNlcl9pZCI6NH0.9JM2olScqe9L_aja16aBAb3rCoxIw_N6pT99w-muips
+
+### 📚 Step 7: Get All Blogs
+GET http://localhost:8000/restpractice/blogs/
+Authorization: Bearer {{access_token}}
+
+### ✍️ Step 8: Create Blog
+POST http://localhost:8000/restpractice/blogs/create/
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "title": "My First Blog",
+  "content": "This is the content of my blog post."
+}
+
+### 📄 Step 9: Get Blog Details
+GET http://localhost:8000/restpractice/blogs/1/
+Authorization: Bearer {{access_token}}
+
+### 💬 Step 10: List Comments on Blog
+GET http://localhost:8000/restpractice/blogs/1/comments/
+Authorization: Bearer {{access_token}}
+
+### ➕ Step 11: Add Comment to Blog
+POST http://localhost:8000/restpractice/blogs/1/comments/add/
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "content": "Nice post!"
+}
+
+### ✏️ Step 12: Edit Comment
+PUT http://localhost:8000/restpractice/blogs/1/comments/1/edit/
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "content": "Updated comment content."
+}
+
+### 🗑️ Step 13: Delete Comment
+DELETE http://localhost:8000/restpractice/blogs/1/comments/1/delete/
+Authorization: Bearer {{access_token}}
+
+
+POST /logout/
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "refresh": "<refresh_token>"
+}
